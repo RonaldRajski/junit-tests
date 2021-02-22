@@ -1,11 +1,12 @@
-
-
 import org.junit.Before;
-        import org.junit.Test;
+import org.junit.Test;
+import java.util.ArrayList;
+import static org.junit.Assert.*;
 
-        import java.util.ArrayList;
 
-        import static org.junit.Assert.*;
+
+
+
 public class StudentTest {
     private Student student1;
 
@@ -44,4 +45,45 @@ public class StudentTest {
         assertEquals(90, student1.getGradeAverage(),0);
     }
 
-}
+
+
+
+        @Test
+        public void testCreateStudent(){
+            Student ron = new Student(1L, "ron");
+            Student clark = null;
+            assertNull(clark);
+            assertNotNull(ron);
+        }
+
+        @Test
+        public void testStudentFields(){
+            Student ron = new Student(1L, "ron");
+            assertSame(1L, ron.getId());
+            assertSame("ron", ron.getName());
+            assertSame(0, ron.getGrades().size());
+        }
+
+
+        @Test
+        public void testAddGrade(){
+            Student ron  = new Student(1L, "ron");
+            ron.addGrade(100);
+            assertSame(100,ron.getGrades().get(0));
+            ron.addGrade(80);
+            assertSame(80, ron.getGrades().get(1));
+        }
+
+        @Test
+        public void testAverageGrade(){
+            Student ron = new Student(1L, "ron");
+            ron.addGrade(100);
+            ron.addGrade(80);
+            assertEquals(90, ron.getGradeAverage(), 0);
+        }
+    }
+
+
+
+
+
