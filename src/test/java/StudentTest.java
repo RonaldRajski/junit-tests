@@ -16,6 +16,8 @@ public class StudentTest {
         student1.addGrade(91);
         student1.addGrade(90);
         student1.addGrade(89);
+        assertEquals(java.util.Optional.of(90), student1.getGrades().get(0));
+        assertEquals(java.util.Optional.of(100), student1.getGrades().get(1));
     }
 
     @Test
@@ -43,6 +45,25 @@ public class StudentTest {
     @Test
     public void testGradeAverage(){
         assertEquals(90, student1.getGradeAverage(),0);
+    }
+
+    @Test
+    public void testIfStudentObjCanBeCreated(){
+        Student fer = new Student(2l, "fer");
+        Student david = null;
+        assertNull(david);
+        assertNotNull(fer);
+    }
+
+    @Test
+    public void testIfFieldWork(){
+        Student fer = new Student(1L, "fer");
+        assertEquals(1,fer.getId());
+        assertEquals("fer", fer.getName());
+        assertNotNull(fer.getGrades());
+
+        Student david = new Student(2L, "david" );
+        assertNotEquals("fer", david.getName());
     }
 
 
